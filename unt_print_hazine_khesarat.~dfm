@@ -1,0 +1,434 @@
+object frm_print_hazine_khesarat: Tfrm_print_hazine_khesarat
+  Left = 192
+  Top = 114
+  Width = 870
+  Height = 679
+  VertScrollBar.Position = 30
+  Caption = 'frm_print_hazine_khesarat'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Scaled = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object QuickRep1: TQuickRep
+    Tag = 1
+    Left = 22
+    Top = -20
+    Width = 559
+    Height = 794
+    Frame.Color = clBlack
+    Frame.DrawTop = False
+    Frame.DrawBottom = False
+    Frame.DrawLeft = False
+    Frame.DrawRight = False
+    DataSet = maduDB.ADOQuery_khesarat
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'B Zar'
+    Font.Style = []
+    Functions.Strings = (
+      'PAGENUMBER'
+      'COLUMNNUMBER'
+      'REPORTTITLE')
+    Functions.DATA = (
+      '0'
+      '0'
+      #39#39)
+    Options = [FirstPageHeader, LastPageFooter]
+    Page.Columns = 1
+    Page.Orientation = poPortrait
+    Page.PaperSize = A5
+    Page.Values = (
+      100.000000000000000000
+      2100.000000000000000000
+      20.000000000000000000
+      1480.000000000000000000
+      20.000000000000000000
+      20.000000000000000000
+      0.000000000000000000)
+    PrinterSettings.Copies = 1
+    PrinterSettings.Duplex = False
+    PrinterSettings.FirstPage = 0
+    PrinterSettings.LastPage = 0
+    PrinterSettings.OutputBin = Auto
+    PrintIfEmpty = True
+    SnapToGrid = True
+    Units = Native
+    Zoom = 100
+    object QRBand1: TQRBand
+      Left = 8
+      Top = 8
+      Width = 544
+      Height = 516
+      Frame.Color = clBlack
+      Frame.DrawTop = False
+      Frame.DrawBottom = False
+      Frame.DrawLeft = False
+      Frame.DrawRight = False
+      AlignToBottom = False
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'B Zar'
+      Font.Style = [fsBold]
+      ForceNewColumn = False
+      ForceNewPage = False
+      ParentFont = False
+      Size.Values = (
+        1365.250000000000000000
+        1439.333333333333000000)
+      BandType = rbDetail
+      object QRLabel2: TQRLabel
+        Left = 676
+        Top = 217
+        Width = 64
+        Height = 25
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          66.145833333333340000
+          1788.583333333333000000
+          574.145833333333400000
+          169.333333333333300000)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Caption = 'QRLabel1'
+        Color = clWhite
+        Transparent = False
+        WordWrap = True
+        FontSize = 11
+      end
+      object QRLabel3: TQRLabel
+        Left = 337
+        Top = 92
+        Width = 162
+        Height = 27
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          71.437500000000000000
+          891.645833333333200000
+          243.416666666666700000
+          428.625000000000000000)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Caption = #1605#1583#1610#1585#1610#1578' '#1605#1581#1578#1585#1605' '#1575#1583#1575#1585#1607' '#1583#1585#1570#1605#1583
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'B Zar'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 12
+      end
+      object QRLabel4: TQRLabel
+        Left = 445
+        Top = 140
+        Width = 54
+        Height = 27
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          71.437500000000000000
+          1177.395833333333000000
+          370.416666666666700000
+          142.875000000000000000)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Caption = #1587#1604#1575#1605' '#1593#1604#1610#1705#1605' '
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'B Zar'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 10
+      end
+      object QRLabel5: TQRLabel
+        Left = 252
+        Top = 180
+        Width = 253
+        Height = 28
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          74.083333333333340000
+          666.750000000000000000
+          476.250000000000000000
+          669.395833333333400000)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Caption = #1575#1581#1578#1585#1575#1605#1575#1611#1548' '#1575#1586' '#1581#1575#1605#1604' '#1606#1575#1605#1607' '#1576#1575#1576#1578' '#1607#1586#1610#1606#1607' '#1582#1587#1575#1585#1578' '#1570#1587#1601#1575#1604#1578' '#1605#1576#1604#1594
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'B Zar'
+        Font.Style = []
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 12
+      end
+      object QRDBText1: TQRDBText
+        Left = 48
+        Top = 179
+        Width = 195
+        Height = 28
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          74.083333333333340000
+          127.000000000000000000
+          473.604166666666700000
+          515.937500000000000000)
+        Alignment = taCenter
+        AlignToBand = False
+        AutoSize = False
+        AutoStretch = False
+        BiDiMode = bdRightToLeft
+        ParentBiDiMode = False
+        Color = clWhite
+        DataSet = maduDB.ADOQuery_khesarat
+        DataField = 'Khesarat_Mablagh_Khesarat'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'B Zar'
+        Font.Style = []
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 12
+      end
+      object QRLabel6: TQRLabel
+        Left = 15
+        Top = 180
+        Width = 22
+        Height = 28
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          74.083333333333340000
+          39.687500000000000000
+          476.250000000000000000
+          58.208333333333340000)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Caption = #1585#1610#1575#1604
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'B Zar'
+        Font.Style = []
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 12
+      end
+      object QRLabel7: TQRLabel
+        Left = 14
+        Top = 215
+        Width = 500
+        Height = 28
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          74.083333333333340000
+          37.041666666666670000
+          568.854166666666800000
+          1322.916666666667000000)
+        Alignment = taRightJustify
+        AlignToBand = False
+        AutoSize = False
+        AutoStretch = False
+        Caption = 
+          '.'#1583#1585#1610#1575#1601#1578' '#1608' '#1576#1607' '#1581#1587#1575#1576' '#1580#1575#1585#1610' '#1587#1610#1576#1575' 0200892328000  '#1576#1575#1606#1705' '#1605#1604#1610' '#1588#1593#1576#1607' '#1606#1608#1587#1575#1586#1610' ' +
+          #1608#1575#1585#1610#1586' '#1608' '#1601#1610#1588' '#1570#1606#1585#1575' '#1575#1585#1587#1575#1604' '#1606#1605#1575#1574#1610#1583
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'B Zar'
+        Font.Style = []
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 12
+      end
+      object QRLabel1: TQRLabel
+        Left = 67
+        Top = 339
+        Width = 80
+        Height = 26
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          68.791666666666680000
+          177.270833333333300000
+          896.937500000000000000
+          211.666666666666700000)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Caption = #1605#1581#1605#1583' '#1583#1575#1606#1588#1605#1606#1583#1610#1575#1606
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'B Zar'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 10
+      end
+      object QRLabel8: TQRLabel
+        Left = 35
+        Top = 367
+        Width = 141
+        Height = 26
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          68.791666666666680000
+          92.604166666666680000
+          971.020833333333400000
+          373.062500000000000000)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Caption = #1605#1587#1574#1608#1604' '#1608#1575#1581#1583' '#1581#1601#1575#1585#1610' '#1608' '#1582#1587#1575#1585#1578
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'B Zar'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 10
+      end
+      object QRLabel9: TQRLabel
+        Left = 445
+        Top = 442
+        Width = 43
+        Height = 26
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          68.791666666666680000
+          1177.395833333333000000
+          1169.458333333333000000
+          113.770833333333300000)
+        Alignment = taRightJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        BiDiMode = bdRightToLeftReadingOnly
+        ParentBiDiMode = False
+        Caption = #1585#1608#1606#1608#1588#1578':'
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -15
+        Font.Name = 'B Zar'
+        Font.Style = []
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 11
+      end
+      object QRLabel10: TQRLabel
+        Left = 347
+        Top = 469
+        Width = 128
+        Height = 26
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          68.791666666666680000
+          918.104166666666800000
+          1240.895833333333000000
+          338.666666666666700000)
+        Alignment = taRightJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        BiDiMode = bdRightToLeftReadingOnly
+        ParentBiDiMode = False
+        Caption = '   - '#1608#1575#1581#1583' '#1581#1601#1575#1585#1610' '#1608' '#1582#1587#1575#1585#1578
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -15
+        Font.Name = 'B Zar'
+        Font.Style = []
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 11
+      end
+    end
+  end
+end

@@ -1,0 +1,305 @@
+unit unt_nezart;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, DB, Grids, DBGrids, SUIDBCtrls, DBCtrls, Mask;
+
+type
+  Tfrm_nezart = class(TForm)
+    GroupBox1: TGroupBox;
+    ch_zayeat: TCheckBox;
+    ch_makhlot: TCheckBox;
+    ch_ghargab: TCheckBox;
+    ch_payan_hafari: TCheckBox;
+    ch_tarakom: TCheckBox;
+    ch_ghir: TCheckBox;
+    ch_asfalt: TCheckBox;
+    Label4: TLabel;
+    mem_Vasiate_Bazsazi: TMemo;
+    edt_Vahed_Control: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    cmbo_Nazer: TComboBox;
+    Label8: TLabel;
+    edt_tarikh_roz: TEdit;
+    edt_tarikh_mah: TEdit;
+    Label10: TLabel;
+    Label11: TLabel;
+    edt_tarikh_sal: TEdit;
+    Label3: TLabel;
+    edt_shomare_darkhast_hafari: TEdit;
+    suiDBGrid1: TsuiDBGrid;
+    DataSource1: TDataSource;
+    l_shomare_darkhast: TDBText;
+    Label5: TLabel;
+    Button1: TButton;
+    l_code: TLabel;
+    procedure edt_tarikh_rozKeyPress(Sender: TObject; var Key: Char);
+    procedure edt_tarikh_mahKeyPress(Sender: TObject; var Key: Char);
+    procedure edt_tarikh_salKeyPress(Sender: TObject; var Key: Char);
+    procedure edt_shomare_darkhast_hafariChange(Sender: TObject);
+    procedure edt_shomare_darkhast_hafariKeyPress(Sender: TObject;
+      var Key: Char);
+    procedure show_nezarat;
+    procedure FormShow(Sender: TObject);
+    procedure check;
+    procedure DBEdit1Change(Sender: TObject);
+    procedure update;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_nezart: Tfrm_nezart;
+
+implementation
+
+uses untmadulDB;
+
+{$R *.dfm}
+procedure Tfrm_nezart.update;
+var tarikh:string;
+    i:integer;
+begin
+  l_code.Caption:=l_shomare_darkhast.Caption;
+
+  maduDB.ADOQuery_nezarat2.SQL.Text:='update T_Nezarat set ';
+
+  if (ch_zayeat.Checked) then
+    maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+'Nezarat_Zayeat='+QuotedStr('«‰Ã«„ ‘œÂ')
+  else
+    maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+'Nezarat_Zayeat='+QuotedStr('«‰Ã«„ ‰‘œÂ');
+
+
+  if (ch_payan_hafari.Checked) then
+    maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+',Nezarat_Payane_Hafari='+QuotedStr('«‰Ã«„ ‘œÂ')
+  else
+    maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+',Nezarat_Payane_Hafari='+QuotedStr('«‰Ã«„ ‰‘œÂ');
+
+
+  if (ch_makhlot.Checked) then
+    maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+',Nezarat_Makhlote_Rizi='+QuotedStr('«‰Ã«„ ‘œÂ')
+  else
+    maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+',Nezarat_Makhlote_Rizi='+QuotedStr('«‰Ã«„ ‰‘œÂ');
+
+
+  if (ch_ghargab.Checked) then
+    maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+',Nezarat_Ghargh_Abi='+QuotedStr('«‰Ã«„ ‘œÂ')
+  else
+    maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+',Nezarat_Ghargh_Abi='+QuotedStr('«‰Ã«„ ‰‘œÂ');
+
+
+  if (ch_tarakom.Checked) then
+    maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+',Nezarat_Tarakom_Kamiat='+QuotedStr('«‰Ã«„ ‘œÂ')
+  else
+    maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+',Nezarat_Tarakom_Kamiat='+QuotedStr('«‰Ã«„ ‰‘œÂ');
+
+
+  if (ch_ghir.Checked) then
+    maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+',Nezarat_Ghir_Pashi='+QuotedStr('«‰Ã«„ ‘œÂ')
+  else
+    maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+',Nezarat_Ghir_Pashi='+QuotedStr('«‰Ã«„ ‰‘œÂ');
+
+
+  if (ch_asfalt.Checked) then
+    maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+',Nezarat_Asfalt='+QuotedStr('«‰Ã«„ ‘œÂ')
+  else
+    maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+',Nezarat_Asfalt='+QuotedStr('«‰Ã«„ ‰‘œÂ');
+
+  i:=StrLen(pchar(trim(edt_tarikh_roz.Text)));
+  if (i<2)then
+  begin
+    if (i=1)then
+      edt_tarikh_roz.Text:='0'+edt_tarikh_roz.Text;
+
+    if (i=0)then
+      edt_tarikh_roz.Text:='00';
+  end;
+
+  i:=StrLen(pchar(trim(edt_tarikh_mah.Text)));
+  if (i<2)then
+  begin
+    if (i=1)then
+      edt_tarikh_mah.Text:='0'+edt_tarikh_mah.Text;
+
+    if (i=0)then
+      edt_tarikh_mah.Text:='00';
+  end;
+
+  i:=StrLen(pchar(trim(edt_tarikh_sal.Text)));
+  if (i<4)then
+  begin
+
+    if (i=3)then
+      edt_tarikh_sal.Text:='0'+edt_tarikh_sal.Text;
+
+    if (i=2)then
+      edt_tarikh_sal.Text:='00'+edt_tarikh_sal.Text;
+
+    if (i=1)then
+      edt_tarikh_sal.Text:='000'+edt_tarikh_sal.Text;
+
+    if (i=0)then
+      edt_tarikh_sal.Text:='0000';
+  end;
+
+
+
+
+  tarikh:=trim(edt_tarikh_sal.Text)+'/'+trim(edt_tarikh_mah.Text)+'/'+trim(edt_tarikh_roz.Text);
+
+  if(tarikh='//')then
+    tarikh:='';
+
+  maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+',Nezarat_Vasiate_Bazsazi='+QuotedStr(mem_Vasiate_Bazsazi.Text);
+  maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+',Nezarat_Shakhse_Control_Konande='+QuotedStr(cmbo_Nazer.Text);
+  maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+',Nezarat_Vahede_Nezarat='+QuotedStr(edt_Vahed_Control.Text);
+  maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+',Nezarat_Tarikh='+QuotedStr(tarikh);
+
+
+    maduDB.ADOQuery_nezarat2.SQL.Text:=maduDB.ADOQuery_nezarat2.SQL.Text+' where Nezarat_Shomare_darkhast='+QuotedStr(l_code.Caption);
+
+
+
+
+
+  maduDB.ADOQuery_nezarat2.ExecSQL;
+
+  show_nezarat;
+  maduDB.ADOQuery_nezarat.Locate('Nezarat_Shomare_darkhast',trim(l_code.Caption),[loPartialKey]);
+end;
+
+procedure Tfrm_nezart.check;
+var date,roz,mah,sal:string;
+begin
+    if (maduDB.ADOQuery_nezaratNezarat_Zayeat.AsString='«‰Ã«„ ‘œÂ') then
+      frm_nezart.ch_zayeat.Checked:=true
+    else
+      frm_nezart.ch_zayeat.Checked:=false;
+
+    if (maduDB.ADOQuery_nezaratNezarat_Payane_Hafari.AsString='«‰Ã«„ ‘œÂ') then
+      frm_nezart.ch_payan_hafari.Checked:=true
+    else
+      frm_nezart.ch_payan_hafari.Checked:=false;
+
+    if (maduDB.ADOQuery_nezaratNezarat_Makhlote_Rizi.AsString='«‰Ã«„ ‘œÂ') then
+      frm_nezart.ch_makhlot.Checked:=true
+    else
+      frm_nezart.ch_makhlot.Checked:=false;
+
+
+    if (maduDB.ADOQuery_nezaratNezarat_Ghargh_Abi.AsString='«‰Ã«„ ‘œÂ') then
+      frm_nezart.ch_ghargab.Checked:=true
+    else
+      frm_nezart.ch_ghargab.Checked:=false;
+
+    if (maduDB.ADOQuery_nezaratNezarat_Tarakom_Kamiat.AsString='«‰Ã«„ ‘œÂ') then
+      frm_nezart.ch_tarakom.Checked:=true
+    else
+      frm_nezart.ch_tarakom.Checked:=false;
+
+    if (maduDB.ADOQuery_nezaratNezarat_Ghir_Pashi.AsString='«‰Ã«„ ‘œÂ') then
+      frm_nezart.ch_ghir.Checked:=true
+    else
+      frm_nezart.ch_ghir.Checked:=false;
+
+    if (maduDB.ADOQuery_nezaratNezarat_Asfalt.AsString='«‰Ã«„ ‘œÂ') then
+      frm_nezart.ch_asfalt.Checked:=true
+    else
+      frm_nezart.ch_asfalt.Checked:=false;
+
+    mem_Vasiate_Bazsazi.Text:=maduDB.ADOQuery_nezaratNezarat_Vasiate_Bazsazi.AsString;
+    edt_Vahed_Control.Text:=maduDB.ADOQuery_nezaratNezarat_Vahede_Nezarat.AsString;
+
+    date:=maduDB.ADOQuery_nezaratNezarat_Tarikh.AsString;
+
+    if (maduDB.ADOQuery_nezaratNezarat_Shakhse_Control_Konande.AsString<>'') then
+      cmbo_Nazer.ItemIndex:=cmbo_Nazer.Items.IndexOf(maduDB.ADOQuery_nezaratNezarat_Shakhse_Control_Konande.AsString)
+    else
+      cmbo_Nazer.ItemIndex:=0;
+
+
+    if (date<>'')then
+    begin
+      roz:=date[9]+date[10];
+      mah:=date[6]+date[7];
+      sal:=date[1]+date[2]+date[3]+date[4];
+    end
+    else
+    begin
+      roz:='';
+      mah:='';
+      sal:='';
+    end;
+
+    edt_tarikh_roz.Text:=roz;
+    edt_tarikh_mah.Text:=mah;
+    edt_tarikh_sal.Text:=sal;
+end;
+
+
+procedure Tfrm_nezart.show_nezarat;
+begin
+  maduDB.ADOQuery_nezarat.SQL.Text:='select * from T_Nezarat order by Nezarat_Shomare_darkhast';
+  maduDB.ADOQuery_nezarat.Open;
+end;
+
+
+procedure Tfrm_nezart.edt_tarikh_rozKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+     if not (key in['0'..'9',#8]) then
+        key:=#0;
+end;
+
+procedure Tfrm_nezart.edt_tarikh_mahKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+     if not (key in['0'..'9',#8]) then
+        key:=#0;
+end;
+
+procedure Tfrm_nezart.edt_tarikh_salKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+     if not (key in['0'..'9',#8]) then
+        key:=#0;
+end;
+
+procedure Tfrm_nezart.edt_shomare_darkhast_hafariChange(Sender: TObject);
+begin
+  if (edt_shomare_darkhast_hafari.Text<>'') then
+    maduDB.ADOQuery_nezarat.Locate('Nezarat_Shomare_darkhast',trim(edt_shomare_darkhast_hafari.Text),[loPartialKey]);
+end;
+
+procedure Tfrm_nezart.edt_shomare_darkhast_hafariKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+     if not (key in['0'..'9',#8]) then
+        key:=#0;
+end;
+
+procedure Tfrm_nezart.FormShow(Sender: TObject);
+begin
+  show_nezarat;
+end;
+
+
+
+
+procedure Tfrm_nezart.DBEdit1Change(Sender: TObject);
+begin
+  frm_nezart.check;
+end;
+
+procedure Tfrm_nezart.Button1Click(Sender: TObject);
+begin
+  update;
+end;
+
+end.

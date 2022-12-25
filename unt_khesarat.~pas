@@ -1,0 +1,55 @@
+unit unt_khesarat;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  Tfrm_khesarat = class(TForm)
+    GroupBox1: TGroupBox;
+    Label1: TLabel;
+    Label5: TLabel;
+    Label7: TLabel;
+    Label14: TLabel;
+    cmb_mantage: TComboBox;
+    GroupBox2: TGroupBox;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    edt_khiaban: TEdit;
+    edt_koche: TEdit;
+    mem_tozihat_address: TMemo;
+    cmb_shahr: TComboBox;
+    Button1: TButton;
+    edt_shomare_darkhast_hafari: TEdit;
+    GroupBox3: TGroupBox;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label12: TLabel;
+    Label10: TLabel;
+    Label13: TLabel;
+    Label11: TLabel;
+    edt_shoro_roz: TEdit;
+    edt_payan_roz: TEdit;
+    edt_shoro_mah: TEdit;
+    edt_payan_mah: TEdit;
+    edt_shoro_sal: TEdit;
+    edt_payan_sal: TEdit;
+    edt_nameSherkat: TEdit;
+    Button2: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_khesarat: Tfrm_khesarat;
+
+implementation
+
+{$R *.dfm}
+
+end.

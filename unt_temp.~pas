@@ -1,0 +1,24 @@
+unit unt_temp;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs;
+
+type
+  Tfrm_temp = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_temp: Tfrm_temp;
+
+implementation
+
+{$R *.dfm}
+
+end.
